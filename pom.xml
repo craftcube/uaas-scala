@@ -53,29 +53,11 @@
             <version>10.1.7</version>
         </dependency>
 
-
-
-
-
-        <!-- https://mvnrepository.com/artifact/de.heikoseeberger/akka-http-circe -->
-        <!--<dependency>-->
-            <!--<groupId>de.heikoseeberger</groupId>-->
-            <!--<artifactId>akka-http-circe_${scala.compactVersion}</artifactId>-->
-            <!--<version>1.22.0</version>-->
-        <!--</dependency>-->
-        <!-- https://mvnrepository.com/artifact/com.jason-goodwin/authentikat-jwt -->
-        <!--<dependency>-->
-            <!--<groupId>com.jason-goodwin</groupId>-->
-            <!--<artifactId>authentikat-jwt_${scala.compactVersion}</artifactId>-->
-            <!--<version>0.4.5</version>-->
-        <!--</dependency>-->
-        <!-- https://mvnrepository.com/artifact/com.pauldijou/jwt-core -->
         <dependency>
             <groupId>com.pauldijou</groupId>
             <artifactId>jwt-core_2.12</artifactId>
             <version>1.1.0</version>
         </dependency>
-
 
 
         <dependency>
@@ -125,13 +107,6 @@
         </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/io.circe/circe-generic -->
-        <!--<dependency>-->
-            <!--<groupId>io.circe</groupId>-->
-            <!--<artifactId>circe-generic_2.12</artifactId>-->
-            <!--<version>0.10.1</version>-->
-        <!--</dependency>-->
-        <!-- https://mvnrepository.com/artifact/org.scalacheck/scalacheck -->
         <dependency>
             <groupId>org.scalacheck</groupId>
             <artifactId>scalacheck_2.12</artifactId>
