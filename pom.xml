@@ -6,13 +6,15 @@
 
     <groupId>com.matrix</groupId>
     <artifactId>uaas-scala</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
 
     <properties>
         <java.version>1.8</java.version>
-        <scala.version>2.12.5</scala.version>
+        <scala.version>2.12.8</scala.version>
         <scala.compactVersion>2.12</scala.compactVersion>
-        <akka.version>2.5.18</akka.version>
+        <akka.version>2.5.19</akka.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -37,27 +39,98 @@
         <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-http -->
         <dependency>
             <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-http_2.12</artifactId>
-            <version>10.1.5</version>
+            <artifactId>akka-http_${scala.compactVersion}</artifactId>
+            <version>10.1.7</version>
         </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-stream_${scala.compactVersion}</artifactId>
+            <version>${akka.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-http-spray-json_${scala.compactVersion}</artifactId>
+            <version>10.1.7</version>
+        </dependency>
+
+
+
+
+
         <!-- https://mvnrepository.com/artifact/de.heikoseeberger/akka-http-circe -->
-        <dependency>
-            <groupId>de.heikoseeberger</groupId>
-            <artifactId>akka-http-circe_2.12</artifactId>
-            <version>1.22.0</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>de.heikoseeberger</groupId>-->
+            <!--<artifactId>akka-http-circe_${scala.compactVersion}</artifactId>-->
+            <!--<version>1.22.0</version>-->
+        <!--</dependency>-->
         <!-- https://mvnrepository.com/artifact/com.jason-goodwin/authentikat-jwt -->
+        <!--<dependency>-->
+            <!--<groupId>com.jason-goodwin</groupId>-->
+            <!--<artifactId>authentikat-jwt_${scala.compactVersion}</artifactId>-->
+            <!--<version>0.4.5</version>-->
+        <!--</dependency>-->
+        <!-- https://mvnrepository.com/artifact/com.pauldijou/jwt-core -->
         <dependency>
-            <groupId>com.jason-goodwin</groupId>
-            <artifactId>authentikat-jwt_2.12</artifactId>
-            <version>0.4.5</version>
+            <groupId>com.pauldijou</groupId>
+            <artifactId>jwt-core_2.12</artifactId>
+            <version>1.1.0</version>
         </dependency>
+
+
+
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-cluster-tools_${scala.compactVersion}</artifactId>
+            <version>${akka.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-cluster-sharding -->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-cluster-sharding_${scala.compactVersion}</artifactId>
+            <version>${akka.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-distributed-data -->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-distributed-data_${scala.compactVersion}</artifactId>
+            <version>${akka.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lightbend.akka.management</groupId>
+            <artifactId>akka-management_2.12</artifactId>
+            <version>0.20.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.lightbend.akka.management</groupId>
+            <artifactId>akka-management-cluster-http_2.12</artifactId>
+            <version>0.20.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lightbend.akka.management</groupId>
+            <artifactId>akka-management-cluster-bootstrap_2.12</artifactId>
+            <version>0.20.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.lightbend.akka.discovery</groupId>
+            <artifactId>akka-discovery-dns_2.12</artifactId>
+            <version>0.20.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.lightbend.akka.discovery/akka-discovery-config -->
+        <dependency>
+            <groupId>com.lightbend.akka.discovery</groupId>
+            <artifactId>akka-discovery-config_2.12</artifactId>
+            <version>0.20.0</version>
+        </dependency>
+
+
         <!-- https://mvnrepository.com/artifact/io.circe/circe-generic -->
-        <dependency>
-            <groupId>io.circe</groupId>
-            <artifactId>circe-generic_2.12</artifactId>
-            <version>0.10.1</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>io.circe</groupId>-->
+            <!--<artifactId>circe-generic_2.12</artifactId>-->
+            <!--<version>0.10.1</version>-->
+        <!--</dependency>-->
         <!-- https://mvnrepository.com/artifact/org.scalacheck/scalacheck -->
         <dependency>
             <groupId>org.scalacheck</groupId>
@@ -104,23 +177,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.1.1</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <shadedArtifactAttached>true</shadedArtifactAttached>
-                            <shadedClassifierName>all</shadedClassifierName>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+
         </plugins>
     </build>
 </project>

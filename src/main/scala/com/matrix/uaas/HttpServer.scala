@@ -1,6 +1,7 @@
 package com.matrix.uaas
 
-import akka.actor.{Actor, ActorLogging, Props}
+import akka.actor.{Actor, ActorLogging, ActorRef, Props}
+import akka.cluster.Cluster
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.Http.ServerBinding
 import akka.http.scaladsl.server.{Directive1, Route}
@@ -10,9 +11,11 @@ import akka.pattern._
 
 import scala.util.Failure
 
-class HttpServer (host: String, port: Int) extends Actor with ActorLogging
+class HttpServer (host: String, port: Int, clientShardActor: ActorRef) extends Actor with ActorLogging
 
   with JwtHandler {
+  
+  val cluster = Cluster(context.system)
 
 
   import context.dispatcher
@@ -37,6 +40,6 @@ class HttpServer (host: String, port: Int) extends Actor with ActorLogging
 object HttpServer{
   val name="http-server"
 
-  def apply(host: String, port: Int) = Props(new HttpServer(host, port))
+  def apply(host: String, port: Int, clientShardActor: ActorRef) = Props(new HttpServer(host, port, clientShardActor))
 
 }
