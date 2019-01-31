@@ -24,14 +24,13 @@ class ClusterNode(nr: Int) {
 		system.log.info("Cluster is up!")
 		
 		
-		
-		//		system.actorOf(ClusterSingletonManager.props(Props[ExchangeManager], PoisonPill,
-		//			ClusterSingletonManagerSettings(system)), "exchangeMgr")
-		//
-		//		val exchangeMgr = system.actorOf(ClusterSingletonProxy.props(
-		//			singletonManagerPath = "/user/exchangeMgr",
-		//			settings = ClusterSingletonProxySettings(system)),
-		//			name = "exchangeMgrProxy")
+//		system.actorOf(ClusterSingletonManager.props(Props[ExchangeManager], PoisonPill,
+//			ClusterSingletonManagerSettings(system)), "exchangeMgr")
+//
+//		val exchangeMgr = system.actorOf(ClusterSingletonProxy.props(
+//			singletonManagerPath = "/user/exchangeMgr",
+//			settings = ClusterSingletonProxySettings(system)),
+//			name = "exchangeMgrProxy")
 		//
 		//		val meShardActor: ActorRef = ClusterSharding(system).start(
 		//			typeName = MatchEngineShardActor.shardName,

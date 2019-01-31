@@ -8,12 +8,11 @@ import akka.http.scaladsl.server.{Directive1, Route}
 import akka.stream.ActorMaterializer
 import akka.http.scaladsl.server.Directives._
 import akka.pattern._
+import com.matrix.uaas.rest.JwtHandler
 
 import scala.util.Failure
 
-class HttpServer (host: String, port: Int, clientShardActor: ActorRef) extends Actor with ActorLogging
-
-  with JwtHandler {
+class HttpServer (host: String, port: Int, clientShardActor: ActorRef) extends Actor with ActorLogging {
   
   val cluster = Cluster(context.system)
 
@@ -23,7 +22,7 @@ class HttpServer (host: String, port: Int, clientShardActor: ActorRef) extends A
   private implicit val materializer = ActorMaterializer()
 
 
-  val routes: Route =  login ~ securedContent
+  val routes: Route =  JwtHandler.composedRoute(clientShardActor)
 
   Http(context.system).bindAndHandle(routes, host, port).pipeTo(self)
 
